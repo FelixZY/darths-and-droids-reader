@@ -17,14 +17,20 @@ body * {
    box-sizing: border-box;
 }
 
+.hidden {
+   display: none !important;
+}
+
 .background {
    background-size: cover;
    filter: blur(15px) brightness(50%);
+   z-index: 1;
 }
 
 .comic {
    background-size: contain;
    filter: drop-shadow(0 0 50px #000);
+   z-index: 2;
 }
 
 .image-container {
@@ -48,6 +54,7 @@ body * {
    opacity: 0;
    visibility: hidden;
    transition: opacity .5s ease-out, visibility .5s;
+   z-index: 5;
 }
 
 .touch-visible.visible {
@@ -103,6 +110,7 @@ body * {
    border-top: .5rem solid white;
    border-radius: 100%;
    animation: loader-spin 1.75s linear infinite;
+   z-index: 10;
 }
 
 @keyframes loader-spin {

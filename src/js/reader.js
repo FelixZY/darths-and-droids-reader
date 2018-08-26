@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
    let pageIndex = Number(localStorage.getItem("pageIndex")) || 1;
    let touchVisibilityTimeout = null;
 
+   let loader = document.querySelector(".loader");
    let background = document.querySelector(".background");
    let comic = document.querySelector(".comic");
    let pageDisplay = document.querySelector(".page");
@@ -18,6 +19,9 @@ document.addEventListener("DOMContentLoaded", function() {
    let goLeftHammer = new Hammer(goLeftButton);
    let goRightHammer = new Hammer(goRightButton);
    let setIndexHammer = new Hammer(setIndexButton);
+
+   let hasNextPage = false;
+   let hasPrevPage = false;
 
    function setTouchVisibility(visible) {
       clearTimeout(touchVisibilityTimeout);
@@ -32,32 +36,71 @@ document.addEventListener("DOMContentLoaded", function() {
    }
 
    function setPage(newPageIndex) {
-      pageIndex = newPageIndex;
-      localStorage.setItem("pageIndex", pageIndex);
-      pageDisplay.innerHTML = `<span>Page ${pageIndex}</span>`;
+      loader.classList.remove("hidden");
 
-      let comicUrl = getUrl(pageIndex);
-      background.style.backgroundImage = `url('${comicUrl}')`;
-      comic.style.backgroundImage = `url('${comicUrl}')`;
+      let comicUrl = getUrl(newPageIndex);
+      loadImage(comicUrl,
+         () => {
+            loader.classList.add("hidden");
+            background.style.backgroundImage = `url('${comicUrl}')`;
+            comic.style.backgroundImage = `url('${comicUrl}')`;
 
-      preloadImage(getUrl(pageIndex + 1));
-      preloadImage(getUrl(pageIndex - 1));
+            pageIndex = newPageIndex;
+            localStorage.setItem("pageIndex", pageIndex);
+            pageDisplay.innerHTML = `<span>Page ${pageIndex}</span>`;
+
+            // Preload surrounding pages
+            loadImage(getUrl(newPageIndex + 1),
+               () => {
+                  hasNextPage = true;
+                  goRightButton.classList.remove("hidden");
+               },
+               () => {
+                  hasNextPage = false;
+                  goRightButton.classList.add("hidden");
+               });
+            loadImage(getUrl(newPageIndex - 1),
+               () => {
+                  hasPrevPage = true;
+                  goLeftButton.classList.remove("hidden");
+               },
+               () => {
+                  hasPrevPage = false;
+                  goLeftButton.classList.add("hidden");
+               });
+         },
+         () => {
+            loader.classList.add("hidden");
+            vex.dialog.alert(`Could not find page #${newPageIndex}`);
+         });
    }
 
    function nextPage() {
-      setPage(++pageIndex);
+      if (hasNextPage) {
+         setPage(pageIndex + 1);
+
+      }
    }
 
    function prevPage() {
-      setPage(--pageIndex);
+      if (hasPrevPage) {
+         setPage(pageIndex - 1);
+      }
    }
 
    function getUrl(index) {
       return `http://www.darthsanddroids.net/comics/darths${String(index).padStart(4, "0")}.jpg`;
    }
 
-   function preloadImage(url) {
-      (new Image()).src = url;
+   function loadImage(url, onLoad = null, onError = null) {
+      let image = new Image();
+      if (onLoad !== null) {
+         image.onload = onLoad;
+      }
+      if (onError !== null) {
+         image.onerror = onError;
+      }
+      image.src = url;
    }
 
    function createBinds() {

@@ -12,7 +12,6 @@
 </head>
 
 <body>
-   <div class="loader"></div>
    <div class="background image-container"></div>
    <div class="comic image-container"></div>
    <div class="goLeft touch-visible button">
@@ -25,9 +24,12 @@
       <i class="material-icons">search</i>
    </div>
    <div class="page touch-visible"></div>
+   <div class="loader"></div>
 
    <script src="./vex/vex.combined.min.js"></script>
-   <script>vex.defaultOptions.className = 'vex-theme-wireframe'</script>
+   <script>
+      vex.defaultOptions.className = 'vex-theme-wireframe'
+   </script>
    <script src="./hammer/hammer.min.js"></script>
    <script src="./js/reader.js"></script>
 </body>

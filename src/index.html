@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+   <title>Darths and Droids Reader</title>
+   <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link href="./vex/vex.css" rel="stylesheet">
+   <link href="./vex/vex-theme-wireframe.css" rel="stylesheet" />
+   <link href="./css/reader.css" rel="stylesheet">
+</head>
+
+<body>
+   <div class="loader"></div>
+   <div class="background image-container"></div>
+   <div class="comic image-container"></div>
+   <div class="goLeft touch-visible button">
+      <i class="material-icons">chevron_left</i>
+   </div>
+   <div class="goRight touch-visible button">
+      <i class="material-icons">chevron_right</i>
+   </div>
+   <div class="setIndex touch-visible button">
+      <i class="material-icons">search</i>
+   </div>
+   <div class="page touch-visible"></div>
+
+   <script src="./vex/vex.combined.min.js"></script>
+   <script>vex.defaultOptions.className = 'vex-theme-wireframe'</script>
+   <script src="./hammer/hammer.min.js"></script>
+   <script src="./js/reader.js"></script>
+</body>
+
+</html>

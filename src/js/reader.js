@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function() {
    }
 
    function createBinds() {
-      comicHammer.on("tap", () => setTouchVisibility(true));
+      comicHammer.on("tap", () => setTouchVisibility(touchVisibilityTimeout === null));
 
       // Pagination
       bodyHammer.on("swipeleft", () => nextPage());

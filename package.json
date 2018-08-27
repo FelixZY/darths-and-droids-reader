@@ -1,7 +1,7 @@
 {
    "name": "darths-and-droids-reader",
    "productName": "darths-and-droids-reader",
-   "version": "0.1.1",
+   "version": "0.1.2",
    "description": "A simple reader application for the Darths and Droids webcomic",
    "main": "src/index.js",
    "scripts": {

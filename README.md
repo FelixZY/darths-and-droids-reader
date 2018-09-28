@@ -18,7 +18,7 @@ The application was originally designed for the Microsoft Surface but is compati
 
 ### Portrait
 
-![Screenshot - Portrait](./portrait.jpg)
+<img src="./portrait.jpg" alt="Screenshot - Portrait" height="500" />
 
 Portrait is the recommended orientation for tablets. Tapping or clicking on the comic will temporarily show on-screen controls.
 
@@ -28,7 +28,7 @@ Pro tip: pagination can also be performed using touch swipes or the arrow keys o
 
 ### Landscape
 
-![Screenshot - Landscape](landscape.jpg)
+<img src="./landscape.jpg" alt="Screenshot - Landscape" width="500" />
 
 The reader will automatically resize the comic to fit any screen size. Left over screen area is used to enhance the comic itself.
 

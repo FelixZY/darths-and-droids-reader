@@ -2,7 +2,35 @@
 
 A simple reader application for the Darths and Droids [webcomic](http://www.darthsanddroids.net/).
 
-The application was originally designed for the Microsoft Surface but is compatible with all screen sizes. It supports both touch and keyboard/mouse input.
+The application was originally designed for the Microsoft Surface but is compatible with all screen sizes.
+
+## Features
+
+* provides support for touch, mouse and keyboard input
+* allows you to continue where you last left off
+* allows you to jump to specific pages
+* automatically pulls new comics when available
+* automatically resizes to any screen size (tablet and up is recommended)
+
+## Screenshots
+
+*Comic pages used with permission*
+
+### Portrait
+
+![Screenshot - Portrait](./portrait.jpg)
+
+Portrait is the recommended orientation for tablets. Tapping or clicking on the comic will temporarily show on-screen controls.
+
+The on-screen controls display the current page number (bottom), allow for pagination (left, right) and allow jumps to a specific page (top).
+
+Pro tip: pagination can also be performed using touch swipes or the arrow keys on your keyboard!
+
+### Landscape
+
+![Screenshot - Landscape](landscape.jpg)
+
+The reader will automatically resize the comic to fit any screen size. Left over screen area is used to enhance the comic itself.
 
 ## Getting Started
 
